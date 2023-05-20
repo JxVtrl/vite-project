@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 function App() {
   const navBarCenter = [
     {
@@ -14,7 +12,10 @@ function App() {
       name: "Sale",
       className: "normal-case text-md text-orange-500 cursor-pointer",
     },
-  ];
+  ] as {
+    name: string;
+    className: string;
+  }[];
 
   const navBarStart = [
     {
@@ -49,7 +50,15 @@ function App() {
       name: "Logo",
       className: "btn btn-ghost",
     },
-  ];
+  ] as {
+    name: string;
+    className: string;
+    icon?: JSX.Element;
+    data?: {
+      id: number;
+      name: string;
+    }[];
+  }[];
 
   const navBarEnd = [
     {
@@ -95,7 +104,10 @@ function App() {
         </svg>
       ),
     },
-  ];
+  ] as {
+    name: string;
+    icon: JSX.Element;
+  }[];
 
   const navBarBottom = [
     {
@@ -209,7 +221,15 @@ function App() {
         },
       ],
     },
-  ];
+  ] as {
+    name: string;
+    img?: string;
+    list?: {
+      id: number;
+      name: string;
+      code?: string;
+    }[];
+  }[];
 
   return (
     <>
@@ -273,7 +293,7 @@ function App() {
                     {item.list.map((item) => {
                       return (
                         <li>
-                          {item.code && item?.code ? (
+                          {item?.code ? (
                             <a className="flex items-center gap-2">
                               <span
                                 className="w-4 h-4 rounded-full border-2 border-base-100"
