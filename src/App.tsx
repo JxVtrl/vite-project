@@ -4,38 +4,22 @@ function App() {
   const navBarCenter = [
     {
       name: "Category",
-      className: "btn btn-ghost normal-case text-md align-center gap-2",
-      icon: (
-        <svg
-          width="15"
-          height="8"
-          viewBox="0 0 15 8"
-          fill="none"
-          className="self-center"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M0.792893 0.292893C1.18342 -0.0976311 1.81658 -0.0976311 2.20711 0.292893L7.5 5.58579L12.7929 0.292893C13.1834 -0.0976311 13.8166 -0.0976311 14.2071 0.292893C14.5976 0.683417 14.5976 1.31658 14.2071 1.70711L8.20711 7.70711C7.81658 8.09763 7.18342 8.09763 6.79289 7.70711L0.792893 1.70711C0.402369 1.31658 0.402369 0.683417 0.792893 0.292893Z"
-            fill="#292929"
-          />
-        </svg>
-      ),
+      className: "flex normal-case text-md align-center gap-2 cursor-pointer",
     },
     {
       name: "Filter",
-      className: "btn btn-ghost normal-case text-md",
+      className: "normal-case text-md cursor-pointer",
     },
     {
       name: "Sale",
-      className: "btn btn-ghost normal-case text-md",
+      className: "normal-case text-md text-orange-500 cursor-pointer",
     },
   ];
 
   const navBarStart = [
     {
       name: "Hambuger",
-      className: "dropdown",
+      className: "btn btn-ghost align-center cursor-pointer", 
       icon: (
         <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
           <path
@@ -63,7 +47,7 @@ function App() {
     },
     {
       name: "Logo",
-      className: "btn btn-ghost btn-circle",
+      className: "btn btn-ghost",
     },
   ];
 
@@ -118,10 +102,10 @@ function App() {
   return (
     <>
       <div className="navbar bg-base-100 flex align-center">
-        <div className="navbar-start">
+        <div className="navbar-start gap-4">
           {navBarStart.map((item) => (
             <div className="dropdown dropdown-start">
-              <label tabIndex={0} className="btn btn-ghost btn-circle">
+              <label tabIndex={0} className={item.className}>
                 {item.icon ? item.icon : item.name}
               </label>
               {item.data && (
@@ -138,7 +122,7 @@ function App() {
           ))}
         </div>
 
-        <div className="navbar-center">
+        <div className="navbar-center gap-4">
           {navBarCenter.map((item) => (
             <div className={item.className}>
               <label tabIndex={0} >
