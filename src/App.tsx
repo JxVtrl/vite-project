@@ -100,12 +100,11 @@ function App() {
   const navBarBottom = [
     {
       name: "Popular product",
-      img: "https://images.unsplash.com/photo-1612833609248-4b7b3e7b9b0b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHBob3RvJTIwcHJvZHVjdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+      img: "https://images.unsplash.com/photo-1684444161762-95fbabc9a766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=400&q=60",
       className: "card",
     },
     {
       name: "Categories",
-      img: "https://images.unsplash.com/photo-1612833609248-4b7b3e7b9b0b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHBob3RvJTIwcHJvZHVjdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
       list: [
         {
           id: 0,
@@ -156,26 +155,32 @@ function App() {
         {
           id: 0,
           name: "Black",
+          code: "#000",
         },
         {
           id: 1,
           name: "White",
+          code: "#fff",
         },
         {
           id: 2,
           name: "Red",
+          code: "#f00",
         },
         {
           id: 3,
           name: "Blue",
+          code: "#00f",
         },
         {
           id: 4,
           name: "Yellow",
+          code: "#ff0",
         },
         {
           id: 5,
           name: "Green",
+          code: "#0f0",
         },
       ],
     },
@@ -248,27 +253,40 @@ function App() {
         </div>
       </div>
 
-
-
-      
-      <div className="flex justify-center">
+      <div className="flex justify-center border-solid border-grey-300 border">
         <div className="navbar-bottom flex gap-4">
           {navBarBottom.map((item) => (
             <div className="card">
               <div className="card-body">
                 <h2 className="card-title">{item.name}</h2>
                 {item.img && (
-                  <div className="card-image">
-                    <img src={item.img} alt="img" />
+                  <div className="card-image bg-base-200">
+                    <img
+                      src={item.img}
+                      alt="img"
+                      className="w-full object-cover object-center rounded-t-lg"
+                    />
                   </div>
                 )}
                 {item.list && (
                   <ul className="menu row-span-2">
-                    {item.list.map((item) => (
-                      <li>
-                        <a>{item.name}</a>
-                      </li>
-                    ))}
+                    {item.list.map((item) => {
+                      return (
+                        <li>
+                          {item.code && item?.code ? (
+                            <a className="flex items-center gap-2">
+                              <span
+                                className="w-4 h-4 rounded-full border-2 border-base-100"
+                                style={{ backgroundColor: item.code }}
+                              ></span>
+                              {item.name}
+                            </a>
+                          ) : (
+                            <a>{item.name}</a>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
               </div>
