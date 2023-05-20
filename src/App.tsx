@@ -19,7 +19,7 @@ function App() {
   const navBarStart = [
     {
       name: "Hambuger",
-      className: "btn btn-ghost align-center cursor-pointer", 
+      className: "btn btn-ghost align-center cursor-pointer",
       icon: (
         <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
           <path
@@ -97,7 +97,114 @@ function App() {
     },
   ];
 
-  const filters = [];
+  const navBarBottom = [
+    {
+      name: "Popular product",
+      img: "https://images.unsplash.com/photo-1612833609248-4b7b3e7b9b0b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHBob3RvJTIwcHJvZHVjdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+      className: "card",
+    },
+    {
+      name: "Categories",
+      img: "https://images.unsplash.com/photo-1612833609248-4b7b3e7b9b0b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHBob3RvJTIwcHJvZHVjdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+      list: [
+        {
+          id: 0,
+          name: "All",
+        },
+        {
+          id: 1,
+          name: "Clothes",
+        },
+        {
+          id: 2,
+          name: "Shoes",
+        },
+      ],
+    },
+    {
+      name: "Sizes",
+      list: [
+        {
+          id: 0,
+          name: "32",
+        },
+        {
+          id: 1,
+          name: "34",
+        },
+        {
+          id: 2,
+          name: "36",
+        },
+        {
+          id: 3,
+          name: "38",
+        },
+        {
+          id: 4,
+          name: "40",
+        },
+        {
+          id: 5,
+          name: "42",
+        },
+      ],
+    },
+    {
+      name: "Colors",
+      list: [
+        {
+          id: 0,
+          name: "Black",
+        },
+        {
+          id: 1,
+          name: "White",
+        },
+        {
+          id: 2,
+          name: "Red",
+        },
+        {
+          id: 3,
+          name: "Blue",
+        },
+        {
+          id: 4,
+          name: "Yellow",
+        },
+        {
+          id: 5,
+          name: "Green",
+        },
+      ],
+    },
+    {
+      name: "Price",
+      list: [
+        {
+          id: 0,
+          name: "All",
+        },
+        {
+          id: 1,
+          name: "$0 - $50",
+        },
+        {
+          id: 2,
+          name: "$50 - $100",
+        },
+        {
+          id: 3,
+          name: "$100 - $150",
+        },
+        {
+          id: 4,
+          name: "$150 - $200",
+        },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -125,9 +232,7 @@ function App() {
         <div className="navbar-center gap-4">
           {navBarCenter.map((item) => (
             <div className={item.className}>
-              <label tabIndex={0} >
-                {item.name}
-              </label>
+              <label tabIndex={0}>{item.name}</label>
             </div>
           ))}
         </div>
@@ -138,6 +243,35 @@ function App() {
               <label tabIndex={0} className="btn btn-ghost btn-circle">
                 {item.icon}
               </label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+
+      
+      <div className="flex justify-center">
+        <div className="navbar-bottom flex gap-4">
+          {navBarBottom.map((item) => (
+            <div className="card">
+              <div className="card-body">
+                <h2 className="card-title">{item.name}</h2>
+                {item.img && (
+                  <div className="card-image">
+                    <img src={item.img} alt="img" />
+                  </div>
+                )}
+                {item.list && (
+                  <ul className="menu row-span-2">
+                    {item.list.map((item) => (
+                      <li>
+                        <a>{item.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           ))}
         </div>
